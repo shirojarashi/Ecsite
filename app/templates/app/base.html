@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>4D_jango</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+		<div class="header">
+			<h1><a href="{% url 'app:index' %}">4D_jango</a></h1>
+			<div class="global-nav">
+				{% if request.user.is_authenticated %}
+					<a href="{% url 'app:logout' %}">Logout</a>
+				{% else %}
+					<a href="{% url 'app:login' %}">Login</a>
+				{% endif %}
+			</div>
+		</div>
+		<div class="container">
+			{% block content %}{% endblock %}
+		</div>
+	</body>
+</html>
